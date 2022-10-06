@@ -8,3 +8,22 @@
 # и Y символов “G” (обозначающих девочек), удовлетворяющую условию задачи. Пробелы между символами выводить не нужно.
 # Если рассадить мальчиков и девочек согласно условию задачи невозможно, выведите строку “Нет решения”.
 
+boys = int(input('Количество мальчиков: '))
+girls = int(input('Количество девочек: '))
+
+if boys > girls:
+    more, less = ['B', boys], ['g', girls]
+else:
+    more, less = ['g', girls], ['B', boys]
+
+if more[1] > less[1] * 2:
+    print('Рассадить невозможно')
+else:
+    pair_number = more[1] - less[1]
+    single_number = less[1] - pair_number
+    seating = ''
+    for i in range(pair_number):
+        seating += more[0] + less[0] + more[0]
+    for i in range(single_number):
+        seating += less[0] + more[0]
+    print(seating)
